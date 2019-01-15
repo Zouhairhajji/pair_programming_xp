@@ -1,4 +1,4 @@
-package fr.dauphine;
+package fr.dauphine.carte;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;

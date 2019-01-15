@@ -1,4 +1,4 @@
-package fr.dauphine;
+package fr.dauphine.carte;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

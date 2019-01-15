@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.dauphine;
+package fr.dauphine.carte;
 
 import java.sql.Timestamp;
 import lombok.Getter;

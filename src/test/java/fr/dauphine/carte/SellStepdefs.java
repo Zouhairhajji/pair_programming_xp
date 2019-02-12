@@ -21,7 +21,7 @@ public class SellStepdefs {
     @Given("^I have (\\d+) item in my wallet$")
     public void verify_elements(int count_items) throws Throwable {
         System.out.println("-> 1");
-        this.chrostopheColomb.addCoffre("Ble", 100L);
+        this.chrostopheColomb.addCoffre("Ble");
         assertEquals(count_items, this.chrostopheColomb.getCoffre().size());
     }
 

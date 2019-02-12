@@ -5,6 +5,8 @@
  */
 package fr.dauphine.carte;
 
+import fr.dauphine.abstracts.Entity;
+import fr.dauphine.zoo.Animal;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Getter;
@@ -16,44 +18,30 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Navigateur {
+public class Navigateur extends Entity {
 
-    private String nom;
-    private String prenom;
-    private int age;
-    private Coffre coffre;
+    private Coffre<Animal> coffre;
     private Carte carte;
 
-    public Navigateur(String nom, String prenom, int age) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.age = age;
+    public Navigateur(Carte carte, String name, int age, String gender) {
+        super(0, 0, age, name, gender);
         this.coffre = new Coffre();
-        this.carte = new Carte(this);
+        this.carte = carte;
     }
 
-    public void echangerCarte(Navigateur navigateur) throws Exception {
-        if (navigateur.getCarte() == null || this.carte == null) {
-            throw new Exception("C'est une arnaque, il faudrait que les deux partenaires pocedent une cartes");
-        }
-
-        Carte carteTmp = navigateur.getCarte();
-        navigateur.setCarte(this.carte);
-        this.carte = carteTmp;
-    }
-
-    public void addToCoffre(String element) {
-        this.coffre.getElements().add(element);
-    }
-
-    public void giveTo(String name, Navigateur otherBrowser) {
-        List<String> toGive = this.coffre
-                .getElements()
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+        List<Animal> toGive = this.carte.getAnimaux()
                 .stream()
-                .filter(s -> s.equalsIgnoreCase(name))
+                .filter(s -> s.getX() == x)
+                .filter(s -> s.getY() == y)
                 .collect(Collectors.toList());
-        this.coffre.getElements().removeIf(s -> s.equalsIgnoreCase(name));
-        toGive.forEach(s -> otherBrowser.addToCoffre(s)  );
+        
+        this.carte.getAnimaux().removeIf( s -> toGive.contains(s) );
+        this.coffre.getElements().addAll(toGive);
     }
+    
+    
 
 }

@@ -5,6 +5,7 @@
  */
 package fr.dauphine.carte;
 
+import fr.dauphine.zoo.Animal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,30 +20,19 @@ import lombok.Setter;
 @Setter
 public class Carte {
 
-    private List<String> zones;
+    private String zoneName;
+    private List<Animal> animaux;
+    private List<Navigateur> navigateurs;
+    
+    
     private Timestamp dernierUpdate;
-    private Navigateur navigateur;
     
-    public Carte(Navigateur navigateur) {
-        // on peut faire une implémentation meilleure,  - BEST EFFORT - 
-        this.zones = new ArrayList<String>() {
-            @Override
-            public boolean add(String e) {
-                boolean state = super.add(e);
-                if (state) {
-                    dernierUpdate = new Timestamp(System.currentTimeMillis());
-                }
-                return state;
-            }
-        };
-
+    public Carte(String zoneName) {
+        this.zoneName = zoneName;
+        this.animaux = new ArrayList<>();
         this.dernierUpdate = new Timestamp(System.currentTimeMillis());
-        this.navigateur = navigateur;
+        this.navigateurs = new ArrayList<>();
     }
-
-    
-
-    
     
     
 

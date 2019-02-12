@@ -17,16 +17,16 @@ import lombok.ToString;
  */
 @ToString
 @Getter
-public class Coffre {
+public class Coffre<T> {
 
     protected int capacity;
-    protected List<String> elements;
+    protected List<T> elements;
 
     public Coffre() {
         this.capacity = 5;
-        this.elements = new ArrayList<String>() {
+        this.elements = new ArrayList<T>() {
             @Override
-            public boolean add(String element) {
+            public boolean add(T element) {
                 return isFull() ? false : super.add(element);
             }
         };
@@ -42,11 +42,13 @@ public class Coffre {
     }
 
     
+    
+    
 
-    public List<String> getElementsByName(String name) {
+    public List<T> getElementsByName(T name) {
         return this.elements
                 .stream()
-                .filter(s -> s.equalsIgnoreCase(name))
+                .filter(s -> s == name)
                 .collect(Collectors.toList());
     }
 

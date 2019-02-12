@@ -8,19 +8,21 @@ package fr.dauphine.carte;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author zouhairhajji
  */
+@Getter
+@Setter
 public class Carte {
 
     private List<String> zones;
-
     private Timestamp dernierUpdate;
-
     private Navigateur navigateur;
-
+    
     public Carte(Navigateur navigateur) {
         // on peut faire une implémentation meilleure,  - BEST EFFORT - 
         this.zones = new ArrayList<String>() {
@@ -38,28 +40,9 @@ public class Carte {
         this.navigateur = navigateur;
     }
 
-    public void addZone(String zone) {
-        if (this.zones == null) {
-            this.zones = new ArrayList<>();
-        }
-        this.zones.add(zone);
-    }
+    
 
-    public Timestamp getDernierUpdate() {
-        return dernierUpdate;
-    }
-
-    public Navigateur getNavigateur() {
-        return navigateur;
-    }
-
-    public List<String> getZones() {
-        return zones;
-    }
-
-    public void setNavigateur(Navigateur navigateur) {
-        this.navigateur = navigateur;
-    }
+    
     
     
 

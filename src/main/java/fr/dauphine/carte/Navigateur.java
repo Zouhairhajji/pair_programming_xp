@@ -5,7 +5,6 @@
  */
 package fr.dauphine.carte;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Getter;
@@ -22,14 +21,14 @@ public class Navigateur {
     private String nom;
     private String prenom;
     private int age;
-    private List<ExchangeHistory> coffre;
+    private Coffre coffre;
     private Carte carte;
 
     public Navigateur(String nom, String prenom, int age) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
-        this.coffre = new ArrayList<>();
+        this.coffre = new Coffre();
         this.carte = new Carte(this);
     }
 
@@ -43,17 +42,18 @@ public class Navigateur {
         this.carte = carteTmp;
     }
 
-    public void addCoffre(String ble, long montant) {
-        this.coffre.add(new ExchangeHistory(ble, montant));
+    public void addToCoffre(String element) {
+        this.coffre.getElements().add(element);
     }
 
     public void giveTo(String name, Navigateur otherBrowser) {
-        List<ExchangeHistory> elements = this.coffre
+        List<String> toGive = this.coffre
+                .getElements()
                 .stream()
-                .filter(s -> s.getNom().equalsIgnoreCase(name))
+                .filter(s -> s.equalsIgnoreCase(name))
                 .collect(Collectors.toList());
-        this.coffre.removeIf(s -> s.getNom().equalsIgnoreCase(name));
-        elements.forEach(s -> otherBrowser.addCoffre(s.getNom(), s.getMontant()));
+        this.coffre.getElements().removeIf(s -> s.equalsIgnoreCase(name));
+        toGive.forEach(s -> otherBrowser.addToCoffre(s)  );
     }
 
 }

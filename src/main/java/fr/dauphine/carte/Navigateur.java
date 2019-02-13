@@ -37,11 +37,31 @@ public class Navigateur extends Entity {
                 .filter(s -> s.getX() == x)
                 .filter(s -> s.getY() == y)
                 .collect(Collectors.toList());
-        
-        this.carte.getAnimaux().removeIf( s -> toGive.contains(s) );
+
+        this.carte.getAnimaux().removeIf(s -> toGive.contains(s));
         this.coffre.getElements().addAll(toGive);
     }
-    
-    
+
+    public List<Animal> capturer() {
+        List<Animal> ToBeCaptured = this.carte.getAnimaux()
+                .stream()
+                .filter(s -> s.getX() == x)
+                .filter(s -> s.getY() == y)
+                .collect(Collectors.toList());
+        this.carte.getAnimaux().removeAll(ToBeCaptured);
+        ToBeCaptured.forEach(s -> this.coffre.getElements().add(s));
+        
+        return ToBeCaptured;
+    }
+
+    public Boolean ameliorerCoffre() {
+        if (this.coffre.getElements().size() > 0) {
+            this.coffre.getElements().remove(0);
+            this.coffre = new CoffreDecorator(this.coffre);
+            return Boolean.TRUE;
+        } else {
+            return Boolean.FALSE;
+        }
+    }
 
 }

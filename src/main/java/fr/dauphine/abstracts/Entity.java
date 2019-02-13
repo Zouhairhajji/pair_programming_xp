@@ -27,4 +27,9 @@ public abstract class Entity {
     
     public abstract void move(int x, int y) ; 
     
+    public void setCoordinate(int x, int y){
+        this.x = x;
+        this.y =y;
+    }
+    
 }

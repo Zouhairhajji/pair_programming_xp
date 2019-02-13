@@ -1,14 +1,25 @@
 Feature: Browser
 
-  Scenario: sell 1 item
-    Given I have 1 item in my wallet
-    When I give the item 1 to the other browser
-    Then I ll have 0 in my wallet
 
 
-  Scenario: buy 1 item
-    Given I have 0 item in my wallet before buy
-    When I buy the 1 item  from the other browser
-    Then I ll have 1 in my wallet after buy
+  Scenario: se deplacer dans un zoo à la position 10 10 pour capturer un animal normal
+
+    Given il y a un animal a la position 10 0
+    When le navigateur capture 0 animal à la position 10 10
+    Then le coffre de navigateur doit contenir 0 animal et le naviteur est en vie
+    
+    Given il y a un animal a la position 10 10
+    When le navigateur capture 1 animal à la position 10 10
+    Then le coffre de navigateur doit contenir 1 animal et le naviteur est en vie
 
 
+
+  Scenario: ameliorer le coffre du navigateur
+
+    Given il y a 1 animal dans le coffre du navigateur
+    When le navigateur ameliore son coffre de 5 elements
+    Then la capacite du coffre devrait etre 10 elements
+
+    Given il y a 0 animal dans le coffre du navigateur
+    When le navigateur ameliore son coffre de 0 elements
+    Then la capacite du coffre devrait etre 5 elements

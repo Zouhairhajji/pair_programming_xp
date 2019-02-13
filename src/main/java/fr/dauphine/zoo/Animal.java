@@ -35,4 +35,9 @@ public class Animal extends Entity{
     public void changeState(AnimalStates state){
 
     }
+
+    @Override
+    public void move(int x, int y) {
+        
+    }
 }

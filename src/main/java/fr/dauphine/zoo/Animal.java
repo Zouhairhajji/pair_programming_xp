@@ -1,6 +1,8 @@
 package fr.dauphine.zoo;
 
 import fr.dauphine.abstracts.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Décrivez votre classe Animal ici.
@@ -8,6 +10,8 @@ import fr.dauphine.abstracts.Entity;
  * @author (votre nom)
  * @version (un numéro de version ou une date)
  */
+@Getter
+@Setter
 public class Animal extends Entity{
 
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
@@ -21,15 +25,14 @@ public class Animal extends Entity{
         // initialisation des variables d'instance
         super(0, 0, age, name, gender);
         this.responsable=resp;
+        //when creating an animal the first time it should be ok...
+        if(state==AnimalStates.NOT_OK){
+            throw new IllegalArgumentException();
+        }
         this.state=state;
     }
 
-    @Override
-    public void move(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void changeState(AnimalStates state){
+
     }
-
-    
-
 }

@@ -40,10 +40,7 @@ public class AnimalTest
     // à l'aide du menu contextuel "Présentoir --> Engagements".
     // Notez cependant que ce dernier ne peut saisir les objets primitifs
     // du présentoir (les objets sans constructeur, comme int, float, etc.).
-    
-    Responsible resp = new Responsible("Animal");
-    Animal Chat = new Animal("Amira", 5,"female",resp,AnimalStates.OK);
-    
+
     /**
      * Constructeur de la classe-test AnimalTest
      */
@@ -73,18 +70,7 @@ public class AnimalTest
         //Libérez ici les ressources engagées par setUp()
     }
 
-    
-    @Test
-    public void Age()
-    {
-        assertEquals(5, Chat.getAge());
-    }
-    
-    @Test
-    public void Name()
-    {
-        assertEquals("Amira", Chat.getName());
-    }
+
 
 }
 

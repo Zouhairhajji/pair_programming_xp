@@ -5,6 +5,7 @@
  */
 package fr.dauphine.carte;
 
+import fr.dauphine.patterns.IObserver;
 import fr.dauphine.zoo.Animal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Carte {
+public class Carte implements IObserver{
 
     private String zoneName;
     private List<Animal> animaux;
@@ -33,6 +34,12 @@ public class Carte {
         this.dernierUpdate = new Timestamp(System.currentTimeMillis());
         this.navigateurs = new ArrayList<>();
     }
+
+    @Override
+    public void update() {
+        this.dernierUpdate = new Timestamp(System.currentTimeMillis());
+    }
+    
     
     
 

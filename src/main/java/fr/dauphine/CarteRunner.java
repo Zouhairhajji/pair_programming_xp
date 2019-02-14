@@ -6,7 +6,7 @@
 package fr.dauphine;
 
 import fr.dauphine.carte.Coffre;
-import fr.dauphine.carte.CoffreDecorator;
+import fr.dauphine.patterns.CoffreDecorator;
 
 /**
  *

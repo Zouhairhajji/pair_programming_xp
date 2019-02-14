@@ -5,6 +5,7 @@
  */
 package fr.dauphine.abstracts;
 
+import fr.dauphine.patterns.Observable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Entity {
+public abstract class Entity extends Observable{
     
     protected Integer x, y;
     protected Integer age;

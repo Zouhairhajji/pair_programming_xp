@@ -6,6 +6,7 @@
 package fr.dauphine.carte;
 
 import fr.dauphine.abstracts.Entity;
+import fr.dauphine.patterns.CoffreDecorator;
 import fr.dauphine.zoo.Animal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class Navigateur extends Entity {
         super(0, 0, age, name, gender);
         this.coffre = new Coffre();
         this.carte = carte;
+        this.addObserver(carte);
     }
 
     public void move(int x, int y) {
@@ -50,7 +52,9 @@ public class Navigateur extends Entity {
                 .collect(Collectors.toList());
         this.carte.getAnimaux().removeAll(ToBeCaptured);
         ToBeCaptured.forEach(s -> this.coffre.getElements().add(s));
-        
+        if (ToBeCaptured.size() > 0) {
+            this.notifyAllObservers();
+        }
         return ToBeCaptured;
     }
 
@@ -64,4 +68,9 @@ public class Navigateur extends Entity {
         }
     }
 
+    public void setCarte(Carte carte) {
+        this.clearObservers();
+        this.carte = carte;
+        this.addObserver(carte);
+    }
 }

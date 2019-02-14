@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.dauphine.carte;
+package fr.dauphine.patterns;
+
+import fr.dauphine.carte.Coffre;
 
 /**
  *

@@ -21,8 +21,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public abstract class Entity extends Observable{
     
-    protected Integer x, y;
-    protected Integer age;
+    protected int x, y;
+    protected int age;
     protected String name;
     protected String gender;
     

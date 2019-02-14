@@ -7,15 +7,12 @@ package fr.dauphine.carte;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Getter;
-import lombok.ToString;
 
 /**
  *
  * @author zouhairhajji
  */
-@ToString
 @Getter
 public class Coffre<T> {
 
@@ -44,12 +41,5 @@ public class Coffre<T> {
     
     
     
-
-    public List<T> getElementsByName(T name) {
-        return this.elements
-                .stream()
-                .filter(s -> s == name)
-                .collect(Collectors.toList());
-    }
 
 }

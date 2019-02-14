@@ -52,4 +52,6 @@ public class CoffreTest {
         Assert.assertEquals(arg1, this.chrostopheColomb.getCoffre().getCapacity());
     }
 
+    
+    
 }

@@ -5,15 +5,10 @@
  */
 package fr.dauphine.zoo;
 
-import cucumber.api.junit.Cucumber;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 /**
  *
@@ -21,16 +16,16 @@ import static org.junit.Assert.assertEquals;
  */
 public class JUnit {
 
-
-
     Responsible resp = new Responsible("Nizar");
-    Animal singe = new Animal("Singe", 7,"F",resp,AnimalStates.OK);
-    Animal chat = new Animal("Chat", 7,"M",resp,AnimalStates.OK);
+    Animal singe = new Animal("Singe", 7, "F", resp, AnimalStates.OK);
+    Animal chat = new Animal("Chat", 7, "M", resp, AnimalStates.OK);
 
-    ArrayList<Animal> animals = new ArrayList<Animal>() {{
-        add(singe);
-        add(chat);
-    }};
+    ArrayList<Animal> animals = new ArrayList<Animal>() {
+        {
+            add(singe);
+            add(chat);
+        }
+    };
 
     HashMap<Responsible, ArrayList<Animal>> hashzoo = new HashMap<Responsible, ArrayList<Animal>>() {
         {
@@ -38,35 +33,33 @@ public class JUnit {
         }
     };
 
-    Zoo zoo= new Zoo(100, hashzoo);
+    Zoo zoo = new Zoo(100, hashzoo);
 
     /**
      * constructor test
      */
     @Test(expected = IllegalArgumentException.class)
-    public void testConstructor()
-    {
+    public void testConstructor() {
         Responsible resptest = new Responsible("Animal");
-        Animal animaltest = new Animal("Amira", 5,"female",resp,AnimalStates.NOT_OK);
+        Animal animaltest = new Animal("Amira", 5, "female", resp, AnimalStates.NOT_OK);
     }
 
     /**
      * getter test
      */
     @Test
-    public void testGender()
-    {
+    public void testGender() {
         assertEquals("F", chat.getGender());
     }
+
     @Test
-    public void testState()
-    {
+    public void testState() {
         assertEquals(AnimalStates.OK, chat.getState());
     }
+
     @Test
-    public void testAge()
-    {
-        assertEquals(Integer.valueOf(7), chat.getAge());
+    public void testAge() {
+        assertEquals(7, chat.getAge());
     }
 
     @Test
@@ -75,22 +68,18 @@ public class JUnit {
     }
 
     @Test
-    public void testGetNumberAnimals(){
-        assertEquals(2,zoo.getNumberAnimals());
+    public void testGetNumberAnimals() {
+        assertEquals(2, zoo.getNumberAnimals());
     }
 
     @Test
-    public void testGetMoyAge(){
+    public void testGetMoyAge() {
         assertEquals(7.00f, zoo.getMoyAge(), 0.0002); // true
     }
 
-
     @Test
-    public void testGetCapacity(){
-        assertEquals(100,zoo.getCapacity());
+    public void testGetCapacity() {
+        assertEquals(100, zoo.getCapacity());
     }
 
-
-
 }
-

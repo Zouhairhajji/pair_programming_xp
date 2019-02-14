@@ -50,8 +50,10 @@ public class Navigateur extends Entity {
                 .filter(s -> s.getX() == x)
                 .filter(s -> s.getY() == y)
                 .collect(Collectors.toList());
+        
         this.carte.getAnimaux().removeAll(ToBeCaptured);
         ToBeCaptured.forEach(s -> this.coffre.getElements().add(s));
+        
         if (ToBeCaptured.size() > 0) {
             this.notifyAllObservers();
         }

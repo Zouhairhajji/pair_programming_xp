@@ -17,7 +17,7 @@ import org.junit.Assert;
  */
 public class CoffreTest {
 
-    private Navigateur chrostopheColomb;
+    private Navigateur christopheColomb;
     private Carte carte;
 
     public void setUp() {
@@ -27,29 +27,29 @@ public class CoffreTest {
     @Given("^il y a (\\d+) animal dans le coffre du navigateur$")
     public void il_y_a_animal_dans_le_coffre_du_navigateur(int nbrAnimals) throws Throwable {
         this.carte = new Carte("Inde");
-        this.chrostopheColomb = new Navigateur(carte, "Chrostophe Colomb", 80, "F");
+        this.christopheColomb = new Navigateur(carte, "Christophe Colomb", 80, "M");
 
         for (int i = 0; i < nbrAnimals; i++) {
-            this.chrostopheColomb.getCoffre().getElements().add(new Animal("animal 1", 20, "M", null, null));
+            this.christopheColomb.getCoffre().getElements().add(new Animal("animal 1", 20, "M", null, null));
         }
 
-        Assert.assertEquals(this.carte, this.chrostopheColomb.getCarte());
-        Assert.assertEquals(nbrAnimals, this.chrostopheColomb.getCoffre().getElements().size());
+        Assert.assertEquals(this.carte, this.christopheColomb.getCarte());
+        Assert.assertEquals(nbrAnimals, this.christopheColomb.getCoffre().getElements().size());
     }
 
     @When("^le navigateur ameliore son coffre de (\\d+) elements$")
     public void le_navigateur_ameliore_son_coffre(int nbr_elements) throws Throwable {
 
-        int oldCapacity = this.chrostopheColomb.getCoffre().getCapacity();
-        Boolean state = this.chrostopheColomb.ameliorerCoffre();
-        int newCapacity = this.chrostopheColomb.getCoffre().getCapacity();
+        int oldCapacity = this.christopheColomb.getCoffre().getCapacity();
+        Boolean state = this.christopheColomb.ameliorerCoffre();
+        int newCapacity = this.christopheColomb.getCoffre().getCapacity();
 
         Assert.assertEquals(nbr_elements, newCapacity - oldCapacity);
     }
 
     @Then("^la capacite du coffre devrait etre (\\d+) elements$")
     public void la_capacite_du_coffre_devrait_etre_ameliorer_de_elements(int arg1) throws Throwable {
-        Assert.assertEquals(arg1, this.chrostopheColomb.getCoffre().getCapacity());
+        Assert.assertEquals(arg1, this.christopheColomb.getCoffre().getCapacity());
     }
 
     

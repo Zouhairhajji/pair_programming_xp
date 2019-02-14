@@ -5,19 +5,17 @@
  */
 package fr.dauphine.zoo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author amiradjilani
  */
 public class Main {
 
-    private long hmar;
-
     public static void main(String[] args) {
-        Main main = new Main();
-        main.hmar = 5L;
-        
-        
 
     }
 }
